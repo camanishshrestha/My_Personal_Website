@@ -472,9 +472,12 @@ Elite Finance & IT Audit Professional with 8+ years of experience spanning Finan
 **Highlights:**
 ✅ Chartered Accountant (ICAN) - Dec 2024
 ✅ CISA Certified (625/800)
-✅ ISO 27001 & 42001 Lead Auditor
+✅ ISO:IEC 27001, 42001 & 27701 Lead Auditor
+✅ Fellow of Management Systems Auditing
+✅ CS50P Harvard University (100%)
+✅ Ethical Hacker - Cisco (90%)
 ✅ 75+ professional certifications
-✅ 9 Credly verified badges
+✅ 16 Credly verified badges
 ✅ 60+ projects completed
 ✅ 100+ companies audited
 ✅ 2x Award Winner (ICAN)
@@ -698,7 +701,7 @@ Would you like to schedule a meeting?`
 Is there anything else you'd like to know about Manish's:
 • Professional background
 • 75+ Certifications
-• 9 Credly Verified Badges
+• 16 Credly Verified Badges
 • Projects
 • Services
 • Contact information
@@ -2049,7 +2052,7 @@ console.log(
     'color: #10b981; font-size: 12px;'
 );
 console.log(
-    '%c🎖️ 9 Credly Verified Badges!',
+    '%c🎖️ 16 Credly Verified Badges!',
     'color: #ffd700; font-size: 12px; font-weight: bold;'
 );
 console.log(
