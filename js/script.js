@@ -20,7 +20,6 @@ function initializeApp() {
     initCounters();
     initScrollAnimations();
     initProjectFilters();
-    initContactForm();
     initScrollToTop();
     initCustomCursor();
     initSkillBars();
@@ -1724,89 +1723,6 @@ function initSkillBars() {
     
     skillBars.forEach(bar => {
         skillObserver.observe(bar);
-    });
-}
-
-// ========================================
-// CONTACT FORM
-// ========================================
-function initContactForm() {
-    const contactForm = document.getElementById('contact-form');
-    
-    if (!contactForm) return;
-    
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            subject: document.getElementById('subject').value,
-            message: document.getElementById('message').value
-        };
-        
-        const submitBtn = contactForm.querySelector('.btn-primary');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        submitBtn.disabled = true;
-        
-        try {
-            await sendContactEmail(formData);
-            showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-            contactForm.reset();
-        } catch (error) {
-            showNotification('Failed to send message. Please try again.', 'error');
-        } finally {
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        }
-    });
-}
-
-// Send Contact Form via Web3Forms
-function sendContactEmail(data) {
-    return new Promise((resolve, reject) => {
-        const formData = new FormData();
-        formData.append('access_key', '36e8d043-01c0-41d2-99b4-0fda13264c67');
-        formData.append('subject', '📩 Contact Form: ' + data.subject);
-        formData.append('from_name', data.name);
-        formData.append('email', data.email);
-        formData.append('message', `
-📩 NEW CONTACT FORM SUBMISSION
-
-👤 From: ${data.name}
-📧 Email: ${data.email}
-📋 Subject: ${data.subject}
-
-💬 Message:
-${data.message}
-
----
-Sent from: ${window.location.href}
-Time: ${new Date().toLocaleString()}
-        `);
-        
-        fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(result => {
-            if (result.success) {
-                console.log('✅ Contact form sent!');
-                resolve(result);
-            } else {
-                console.error('❌ Contact form failed:', result);
-                reject(new Error(result.message));
-            }
-        })
-        .catch(error => {
-            console.error('❌ Contact form error:', error);
-            // Fallback to mailto
-            const mailtoLink = `mailto:ca.manish.shrestha@gmail.com?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(data.message)}%0D%0A%0D%0AFrom: ${encodeURIComponent(data.name)} (${encodeURIComponent(data.email)})`;
-            window.location.href = mailtoLink;
-            resolve();
-        });
     });
 }
 
