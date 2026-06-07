@@ -5117,12 +5117,13 @@ document.getElementById('contact-form').addEventListener('submit', async functio
             headers: { 'Accept': 'application/json' }
         });
         
-        if (response.ok) {
+       if (response.ok) {
             form.reset();
             document.getElementById('form-success').style.display = 'block';
             setTimeout(() => {
                 document.getElementById('form-success').style.display = 'none';
             }, 5000);
+            return;
         }
     } catch (error) {
         console.error('Form error:', error);
